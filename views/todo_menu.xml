@@ -1,0 +1,26 @@
+<?xml version="1.0"?> 
+<odoo> 
+  
+
+  <!-- Menu item to open To-do Task list --> 
+
+<!-- Action to open To-do Task list --> 
+<record id="action_todo_task" model="ir.actions.act_window">
+            <field name="name">To-do Task</field>
+            <field name="res_model">todo.task</field>  <!--es el modelo que hara la accion-->
+            <field name="view_mode">tree,form</field> <!-- distintas vistas que puede tener, tres como lista y form dforumalrio-->
+            <field name="help" type="html"> <!-- Es como un comentario-->
+            <p>
+            Es un modulo para hacer tareas
+            </p>
+            </field>
+</record>
+
+  <menuitem id="menu_todo_task_principal" name="Todo Principal" /> 
+
+  <menuitem id="menu_todo_task" parent="menu_todo_task_principal" name="Todos" action="action_todo_task" /> 
+  <menuitem id="menu_todo_task2" parent="menu_todo_task_principal" name="Todos2" action="action_todo_task" /> 
+  <!-- sequence : es el orden de aparacion de los submenus segun el numero --> 
+
+</odoo>
+
