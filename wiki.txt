@@ -1,0 +1,17 @@
+<!-- 
+model = "ir.action.act_window"
+
+Elementos:
+1. name -> Hace referencia al nombre de la accion y el nombre que aparecera cuando este se ejecute
+2. res_model -> Hace referencia al nombre del modelo sobre el cual estamos trabajando o se va a ejecutar nuestra vista(comportamientos)
+3. view_model -> tipos de vist especifico(tree,form,activity,calendar)
+4. target -> Por defecto trae un valor current, al momento de accionar 
+5. contact -> Pasa valores a nuestra vista que se activran con las acciones de ventana
+6. domain -> Permite establecer filtros sobre los registros que deseamos mostrar.
+7. limit -> Representa la cantidad de registros maximos que queremos tener dentro de nuestro modelo
+8. src_model -> Se pueden accionar con botones desde formulario o desde lista, en accion podemos definir un boton que nos active un modelo 
+que va a ejecutar una logica dentro del modelo
+9. multi -> Nos permite seleccionar >1 registros para presionar un boton que afecte a todos los registros
+-->
+ <!-- sequence : es el orden de aparacion de los submenus segun el numero --> 
+

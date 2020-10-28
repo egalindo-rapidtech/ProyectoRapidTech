@@ -1,316 +1,317 @@
-<?xml version="1.0"?> 
-<odoo> 
-<!-- 
-model = "ir.action.act_window"
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <!--INICIO CATEGORIA INGRESO-->
+        <record id="view_modulo1_categoria_ingreso_form" model="ir.ui.view">
+            <field name="name">modulo1.categoria.ingreso.form</field>
+            <field name="model">modulo1.categoria.ingreso</field>
+            <field name="arch" type="xml">
+                <form string="Ingreso">
+                    <sheet>
+                        <group col="4">
+                            <field name="descripcion"/>
+                            <field name="activo"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-Elementos:
-1. name -> Hace referencia al nombre de la accion y el nombre que aparecera cuando este se ejecute
-2. res_model -> Hace referencia al nombre del modelo sobre el cual estamos trabajando o se va a ejecutar nuestra vista(comportamientos)
-3. view_model -> tipos de vist especifico(tree,form,activity,calendar)
-4. target -> Por defecto trae un valor current, al momento de accionar 
-5. contact -> Pasa valores a nuestra vista que se activran con las acciones de ventana
-6. domain -> Permite establecer filtros sobre los registros que deseamos mostrar.
-7. limit -> Representa la cantidad de registros maximos que queremos tener dentro de nuestro modelo
-8. src_model -> Se pueden accionar con botones desde formulario o desde lista, en accion podemos definir un boton que nos active un modelo 
-que va a ejecutar una logica dentro del modelo
-9. multi -> Nos permite seleccionar >1 registros para presionar un boton que afecte a todos los registros
--->
-<!-- Menu item to open To-do Task list --> 
+      <record id="view_modulo1_categoria_ingreso_tree" model="ir.ui.view">
+            <field name="name">modulo1.categoria.ingreso.tree</field>
+            <field name="model">modulo1.categoria.ingreso</field>
+            <field name="arch" type="xml">
+                <tree string="Ingreso">
+                    <field name="descripcion"/>
+                    <field name="activo"/>
+                </tree>
+            </field>
+        </record>
 
-<!-- ACTIONS TO OPEN VIEWS --> 
-
-<record id="action_maestro_categoria_ingreso" model="ir.actions.act_window">
+      <record id="modulo1_categoria_ingreso_action" model="ir.actions.act_window">
             <field name="name">Categoria Ingreso</field>
-            <field name="res_model">categoria.ingreso</field>  <!--es el modelo que hara la accion-->
-            <field name="view_mode">tree,form</field> <!-- distintas vistas que puede tener, tres como lista y form dforumalrio-->
-            <field name="help" type="html"> <!-- Es como un comentario-->
-            <p>
-            Es un modulo para registrar los tipos de ingreso
-            </p>
+            <field name="res_model">modulo1.categoria.ingreso</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_department_filter"/>-->
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crea una nueva categoria de ingreso
+                </p>
             </field>
-</record>
+        </record>
+    <!--FIN CATEGORIA INGRESO-->
 
-<record id="action_maestro_categoria_egreso" model="ir.actions.act_window">
-            <field name="name">Categoria Ingreso</field>
-            <field name="res_model">categoria.ingreso</field>  <!--es el modelo que hara la accion-->
-            <field name="view_mode">tree,form</field> <!-- distintas vistas que puede tener, tres como lista y form dforumalrio-->
-            <field name="help" type="html"> <!-- Es como un comentario-->
-            <p>
-            Es un modulo para registrar los tipos de egreso
-            </p>
+    <!--INICIO CATEGORIA EGRESO-->
+        <record id="view_modulo1_categoria_egreso_form" model="ir.ui.view">
+            <field name="name">modulo1.categoria.egreso.form</field>
+            <field name="model">modulo1.categoria.egreso</field>
+            <field name="arch" type="xml">
+                <form string="Categoria Egreso">
+                    <sheet>
+                        <group col="4">
+                            <field name="descripcion"/>
+                            <field name="activo"/>
+                        </group>
+                    </sheet>
+                </form>
             </field>
-</record>
+        </record>
 
-<record id="action_maestro_categoria_cliente" model="ir.actions.act_window">
-            <field name="name">Categoria Cliente</field>
-            <field name="res_model">categoria.cliente</field>  <!--es el modelo que hara la accion-->
-            <field name="view_mode">tree,form</field> <!-- distintas vistas que puede tener, tres como lista y form dforumalrio-->
-            <field name="help" type="html"> <!-- Es como un comentario-->
-            <p>
-            Es un modulo para registrar los tipos de cliente
-            </p>
+      <record id="view_modulo1_categoria_egreso_tree" model="ir.ui.view">
+            <field name="name">modulo1.categoria.egreso.tree</field>
+            <field name="model">modulo1.categoria.egreso</field>
+            <field name="arch" type="xml">
+                <tree string="Categoria Egreso">
+                    <field name="descripcion"/>
+                    <field name="activo"/>
+                </tree>
             </field>
-</record>
+        </record>
 
-
-<record id="action_maestro_proveedor" model="ir.actions.act_window">
-            <field name="name">Proveedor</field>
-            <field name="res_model">proveedor</field>  <!--es el modelo que hara la accion-->
-            <field name="view_mode">tree,form</field> <!-- distintas vistas que puede tener, tres como lista y form dforumalrio-->
-            <field name="help" type="html"> <!-- Es como un comentario-->
-            <p>
-            Es un modulo para registrar los proveedores
-            </p>
+      <record id="modulo1_categoria_egreso_action" model="ir.actions.act_window">
+            <field name="name">Categoria Egreso</field>
+            <field name="res_model">modulo1.categoria.egreso</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_department_filter"/>-->
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crea una nueva categoria de egreso
+                </p>
             </field>
-</record>
+        </record>
+    <!--FIN CATEGORIA EGRESO-->
 
-<record id="action_maestro_cliente" model="ir.actions.act_window">
+     <!--INICIO CLIENTE-->
+        <record id="view_modulo1_categoria_egreso_form" model="ir.ui.view">
+            <field name="name">modulo1.cliente.form</field>
+            <field name="model">modulo1.cliente</field>
+            <field name="arch" type="xml">
+                <form string="Cliente">
+                    <sheet>
+                        <group col="4">
+                            <field name="descripcion"/>
+                            <field name="ruc"/>
+                            <field name="cel_contacto"/>
+                            <field name="activo"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+      <record id="view_modulo1_cliente_tree" model="ir.ui.view">
+            <field name="name">modulo1.cliente.tree</field>
+            <field name="model">modulo1.cliente</field>
+            <field name="arch" type="xml">
+                <tree string="Cliente">
+                    <field name="descripcion"/>
+                    <field name="activo"/>
+                </tree>
+            </field>
+        </record>
+
+      <record id="modulo1_cliente_action" model="ir.actions.act_window">
             <field name="name">Cliente</field>
-            <field name="res_model">cliente</field>  <!--es el modelo que hara la accion-->
-            <field name="view_mode">tree,form</field> <!-- distintas vistas que puede tener, tres como lista y form dforumalrio-->
-            <field name="help" type="html"> <!-- Es como un comentario-->
-            <p>
-            Es un modulo para registrar los clientes
-            </p>
+            <field name="res_model">modulo1.cliente</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_department_filter"/>-->
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crea un nuevo Cliente
+                </p>
             </field>
-</record>
+        </record>
+    <!--FIN CLIENTE-->
 
+    <!--INICIO PROVEEDOR-->
+        <record id="view_modulo1_proveedor_form" model="ir.ui.view">
+            <field name="name">modulo1.proveedor.form</field>
+            <field name="model">modulo1.proveedor</field>
+            <field name="arch" type="xml">
+                <form string="Cliente">
+                    <sheet>
+                        <group col="4">
+                            <field name="descripcion"/>
+                            <field name="ruc"/>
+                            <field name="cel_contacto"/>
+                            <field name="activo"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
+      <record id="view_modulo1_proveedor_tree" model="ir.ui.view">
+            <field name="name">modulo1.proveedor.tree</field>
+            <field name="model">modulo1.proveedor</field>
+            <field name="arch" type="xml">
+                <tree string="Cliente">
+                    <field name="descripcion"/>
+                    <field name="activo"/>
+                </tree>
+            </field>
+        </record>
 
+      <record id="modulo1_proveedor_action" model="ir.actions.act_window">
+            <field name="name">Cliente</field>
+            <field name="res_model">modulo1.proveedor</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_department_filter"/>-->
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crea un nuevo Proveedor
+                </p>
+            </field>
+        </record>
+    <!--FIN PROVEEDOR-->
 
-<record id="action_operacion" model="ir.actions.act_window">
+    <!--INICIO INGRESO-->
+        <record id="view_modulo1_ingreso_form" model="ir.ui.view">
+            <field name="name">modulo1.ingreso.form</field>
+            <field name="model">modulo1.ingreso</field>
+            <field name="arch" type="xml">
+                <form string="Ingreso">
+                    <sheet>
+                        <group col="4">
+                            <field name="comentario"/>
+                            <field name="fecha_provision_ingreso"/>
+                            <field name="igv"/>
+                            <field name="monto_provision_ingreso"/>
+                            <field name="periodo"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+      <record id="view_modulo1_ingreso_tree" model="ir.ui.view">
+            <field name="name">modulo1.ingreso.tree</field>
+            <field name="model">modulo1.ingreso</field>
+            <field name="arch" type="xml">
+                <tree string="Ingreso">
+                    <field name="monto_provision_ingreso"/>
+                    <field name="comentario"/>
+                    <field name="periodo"/>
+                </tree>
+            </field>
+        </record>
+
+      <record id="modulo1_ingreso_action" model="ir.actions.act_window">
             <field name="name">Ingreso</field>
-            <field name="res_model">ingreso</field>  <!--es el modelo que hara la accion-->
-            <field name="view_mode">tree,form</field> <!-- distintas vistas que puede tener, tres como lista y form dforumalrio-->
-            <field name="help" type="html"> <!-- Es como un comentario-->
-            <p>
-            Es un modulo para realizar las operaciones del sistema
-            </p>
+            <field name="res_model">modulo1.ingreso</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_department_filter"/>-->
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crea una nueva ingreso
+                </p>
             </field>
-</record>
+        </record>
+<!--FIN INGRESO-->
 
-<record id="action_operacion_ingreso" model="ir.actions.act_window">
-            <field name="name">Ingreso</field>
-            <field name="res_model">ingreso</field>  <!--es el modelo que hara la accion-->
-            <field name="view_mode">tree,form</field> <!-- distintas vistas que puede tener, tres como lista y form dforumalrio-->
-            <field name="help" type="html"> <!-- Es como un comentario-->
-            <p>
-            Es un modulo para realizar las operaciones de ingreso
-            </p>
+<!--INICIO EGRESO-->
+        <record id="view_modulo1_egreso_form" model="ir.ui.view">
+            <field name="name">modulo1.egreso.form</field>
+            <field name="model">modulo1.egreso</field>
+            <field name="arch" type="xml">
+                <form string="Egreso">
+                    <sheet>
+                        <group col="4">
+                            <field name="comentario"/>
+                            <field name="fecha_provision_egreso"/>
+                            <field name="igv"/>
+                            <field name="monto_provision_egreso"/>
+                            <field name="periodo"/>
+                        </group>
+                    </sheet>
+                </form>
             </field>
-</record>
+        </record>
 
-<record id="action_operacion_egreso" model="ir.actions.act_window">
+      <record id="view_modulo1_egreso_tree" model="ir.ui.view">
+            <field name="name">modulo1.egreso.tree</field>
+            <field name="model">modulo1.egreso</field>
+            <field name="arch" type="xml">
+                <tree string="Egreso">
+                    <field name="monto_provision_egreso"/>
+                    <field name="comentario"/>
+                    <field name="periodo"/>
+                </tree>
+            </field>
+        </record>
+
+      <record id="modulo1_egreso_action" model="ir.actions.act_window">
             <field name="name">Egreso</field>
-            <field name="res_model">egreso</field>  <!--es el modelo que hara la accion-->
-            <field name="view_mode">tree,form</field> <!-- distintas vistas que puede tener, tres como lista y form dforumalrio-->
-            <field name="help" type="html"> <!-- Es como un comentario-->
-            <p>
-            Es un modulo para realizar las operaciones de egreso
-            </p>
+            <field name="res_model">modulo1.egreso</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_department_filter"/>-->
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crea una nueva egreso
+                </p>
             </field>
-</record>
+        </record>
+<!--FIN EGRESO-->
+
+<!--INICIO PAGO-->
+        <record id="view_modulo1_pago_form" model="ir.ui.view">
+            <field name="name">modulo1.pago.form</field>
+            <field name="model">modulo1.pago</field>
+            <field name="arch" type="xml">
+                <form string="Pagos">
+                    <sheet>
+                        <group col="4">
+                            <field name="comentario"/>
+                            <field name="fecha_pago"/>
+                            <field name="monto_pago"/>
+                            <field name="monto_pago_igv"/>
+                            <field name="monto_pago_total"/>
+                            <field name="metodo_pago"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+      <record id="view_modulo1_pago_tree" model="ir.ui.view">
+            <field name="name">modulo1.pago.tree</field>
+            <field name="model">modulo1.pago</field>
+            <field name="arch" type="xml">
+                <tree string="Pagos">
+                    <field name="monto_pago_total"/>
+                    <field name="fecha_pago"/>
+                    <field name="metodo_pago"/>
+                </tree>
+            </field>
+        </record>
+
+      <record id="modulo1_pago_action" model="ir.actions.act_window">
+            <field name="name">Pago</field>
+            <field name="res_model">modulo1.pago</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_department_filter"/>-->
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crea una nuevo pago
+                </p>
+            </field>
+        </record>
+<!--FIN PAGO-->
 
 
 <!-- MENU PRINCIPALES-->
   <menuitem id="menu_principal" name="Demo Finanzas" /> 
   <menuitem id="menu_maestro" parent="menu_principal" name="Maestro" />
-  <menuitem id="menu_operacion" parent="menu_principal" name="Operacion"  />  
+  <menuitem id="menu_operacion" parent="menu_principal" name="Operacion"  /> 
 
 <!-- MENUS SECUNDARIOS MAESTROS-->
-    <menuitem id="menu_maestro_categoria_ingreso" parent="menu_maestro" name="Categoria Ingreso" action="action_maestro_categoria_ingreso" />
-    <menuitem id="menu_maestro_categoria_egreso" parent="menu_maestro" name="Categoria Egreso" action="action_maestro_categoria_egreso" />
-    <menuitem id="menu_maestro_categoria_cliente" parent="menu_maestro" name="Categoria Cliente" action="action_maestro_categoria_cliente" />   
-    <menuitem id="menu_maestro_cliente" parent="menu_maestro" name="Cliente" action="action_maestro_cliente" />
-    <menuitem id="menu_maestro_proveedor" parent="menu_maestro" name="Proveedor" action="action_maestro_proveedor" />
+    <menuitem id="modulo1_categoria_ingreso_menu" parent="menu_maestro" name="Categoria Ingreso" action="modulo1_categoria_ingreso_action" />
+    <menuitem id="modulo1_categoria_egreso_menu" parent="menu_maestro" name="Categoria Egreso" action="modulo1_categoria_egreso_action" />
+    <menuitem id="modulo1_cliente_menu" parent="menu_maestro" name="Cliente" action="modulo1_cliente_action" />
+    <menuitem id="modulo1_proveedor_menu" parent="menu_maestro" name="Proveedor" action="modulo1_proveedor_action" />
+    <menuitem id="modulo1_ingreso_menu" parent="menu_operacion" name="Ingreso" action="modulo1_ingreso_action" />
+    <menuitem id="modulo1_egreso_menu" parent="menu_operacion" name="Egreso" action="modulo1_egreso_action" />
 
-<!-- MENUS SECUNDARIOS OPERACION-->    
-    <menuitem id="menu_operacion_ingreso" parent="menu_maestro" name="Ingreso" action="action_operacion_ingreso" />
-    <menuitem id="menu_operacion_egreso" parent="menu_maestro" name="Egreso" action="action_operacion_egreso" />
-  
-  <!-- sequence : es el orden de aparacion de los submenus segun el numero --> 
-
-
-<!-- VISTAS-->
-  <record id="view_form_categoria_ingreso" model="ir.ui.view"> 
-    <field name="name">Form Categoria Ingreso</field> 
-    <field name="model">categoria.ingreso</field> <!-- toma los campos del modelo escrito-->
-    <field name="arch" type="xml"> 
-        <form string="Form Categoria Ingreso"> 
-        <group>
-            <field name="descripcion"/> 
-            <field name="active" readonly="1"/> 
-        </group> 
-        </form>
-    </field> 
-  </record>
-
-  <record id="view_tree_categoria_ingreso" model="ir.ui.view"> 
-    <field name="name">List Categoria Ingreso</field> 
-    <field name="model">categoria.ingreso</field> <!-- toma los campos del modelo escrito-->
-    <field name="arch" type="xml"> 
-        <tree string="List Categoria Ingreso"> 
-        <group>
-            <field name="decripcion"/> 
-            <field name="activo" readonly="1"/> 
-        </group> 
-        </tree>
-    </field> 
-  </record>
-
-  <record id="view_form_categoria_egreso" model="ir.ui.view"> 
-    <field name="name">Form Categoria Egreso</field> 
-    <field name="model">categoria.egreso</field> 
-    <field name="arch" type="xml"> 
-        <form string="Form Categoria Egreso"> 
-        <group>
-            <field name="descripcion"/> 
-            <field name="activo" readonly="1"/> 
-        </group> 
-        </form>
-    </field> 
-  </record>
-
-  <record id="view_tree_categoria_egreso" model="ir.ui.view"> 
-    <field name="name">List Categoria Egreso</field> 
-    <field name="model">categoria.egreso</field> <!-- toma los campos del modelo escrito-->
-    <field name="arch" type="xml"> 
-        <tree string="List Categoria Egreso"> 
-        <group>
-            <field name="descripcion"/> 
-            <field name="activo" readonly="1"/> 
-        </group> 
-        </tree>
-    </field> 
-  </record>
-
-  <record id="view_form_categoria_cliente" model="ir.ui.view"> 
-    <field name="name">List Categoria Cliente</field> 
-    <field name="model">categoria.cliente</field> <!-- toma los campos del modelo escrito-->
-    <field name="arch" type="xml"> 
-        <form string="Form Categoria Egreso"> 
-        <group>
-            <field name="descripcion"/> 
-            <field name="activo" readonly="1"/> 
-        </group> 
-        </form>
-    </field> 
-  </record>
-
- <record id="view_tree_categoria_cliente" model="ir.ui.view"> 
-    <field name="name">List Categoria Cliente</field> 
-    <field name="model">categoria.cliente</field> <!-- toma los campos del modelo escrito-->
-    <field name="arch" type="xml"> 
-        <tree string="List Categoria Egreso"> 
-        <group>
-            <field name="descripcion"/> 
-            <field name="activo" readonly="1"/> 
-        </group> 
-        </tree>
-    </field> 
-  </record>
-
-   <record id="view_form_proveedor" model="ir.ui.view"> 
-    <field name="name">Form Proveedor</field> 
-    <field name="model">proveedor</field> <!-- toma los campos del modelo escrito-->
-    <field name="arch" type="xml"> 
-        <form string="Form Proveedor"> 
-        <group>
-            <field name="descripcion"/> 
-            <field name="ruc" />
-            <field name="activo" readonly="1"/> 
-        </group> 
-        </form>
-    </field> 
-  </record>
-
- <record id="view_tree_proveedor" model="ir.ui.view"> 
-    <field name="name">List Proveedor</field> 
-    <field name="model">proveedor</field> <!-- toma los campos del modelo escrito-->
-    <field name="arch" type="xml"> 
-        <tree string="List Proveedor"> 
-        <group>
-            <field name="descripcion"/> 
-            <field name="ruc" readonly="1"/> 
-        </group> 
-        </tree>
-    </field> 
-  </record>
-
-  <record id="view_form_ingreso" model="ir.ui.view"> 
-    <field name="name">Form Ingreso</field> 
-    <field name="model">ingreso</field> <!-- toma los campos del modelo escrito-->
-    <field name="arch" type="xml"> 
-        <form string="Form Ingreso"> 
-        <group>
-            <field name="cliente_id" />
-            <field name="comentario" />
-            <field name="fecha_provision_ingreso" />
-            <field name="periodo" />
-        </group> 
-        </form>
-    </field> 
-  </record>
-
- <record id="view_tree_ingreso" model="ir.ui.view"> 
-    <field name="name">List Ingreso</field> 
-    <field name="model">ingreso</field> <!-- toma los campos del modelo escrito-->
-    <field name="arch" type="xml"> 
-        <tree string="List Ingreso"> 
-        <group>
-            <field name="cliente_id"/> 
-            <field name="fecha_provision_ingreso" />
-        </group> 
-        </tree>
-    </field> 
-  </record>
-
-  <record id="view_form_egreso" model="ir.ui.view"> 
-    <field name="name">Form Ingreso</field> 
-    <field name="model">ingreso</field> <!-- toma los campos del modelo escrito-->
-    <field name="arch" type="xml"> 
-        <form string="Form Ingreso"> 
-        <group>
-            <field name="proveedor_id" />
-            <field name="comentario" />
-            <field name="fecha_provision_egreso" />
-            <field name="periodo" />
-        </group> 
-        </form>
-    </field> 
-  </record>
-
- <record id="view_tree_egreso" model="ir.ui.view"> 
-    <field name="name">List Ingreso</field> 
-    <field name="model">ingreso</field> <!-- toma los campos del modelo escrito-->
-    <field name="arch" type="xml"> 
-        <tree string="List Ingreso"> 
-        <group>
-            <field name="proveedor_id"/> 
-            <field name="fecha_provision_egreso" />
-        </group> 
-        </tree>
-    </field> 
-  </record>
-
-
-
-
+  </data>
 </odoo>
 
-
-<!--
-  <record id="action_menu_test" model="ir.actions.act_window">
-      <field name="name"> custom </field>
-      <field name="res_model"> todo.task </field>
-      <field name="view_type"> form </field> editarlo desde el formulario(tambien puede ser desde la lista)      <field name="view_mode"> list,form </field>
-  </record>
-
-  <menuitem
-  action="action_menu_test"
-  id="action_menu_test_1"
-  parent="menu_todo_task_principal"
-  name="Menu 1"
-  sequence="1"
-  />
--->

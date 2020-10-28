@@ -3,8 +3,7 @@
     'name': "modulo1",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Demo Finanzas """,
 
     'description': """
         Long description of module's purpose
@@ -31,6 +30,6 @@
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
+        #'demo/demo.xml',
     ],
 }
