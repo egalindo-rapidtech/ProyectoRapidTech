@@ -171,6 +171,14 @@
             <field name="model">modulo1.ingreso</field>
             <field name="arch" type="xml">
                 <form string="Ingreso">
+                    <header>
+                    <button name="change_comentario" type="object"
+                            string="cambiar_comentario" class="oe_highlight"
+                            />
+                    <button name="%(modulo1.action_view_modulo1_cobro_ingreso)d" string="Cobrar"
+                            type="action" class="btn-primary" context="{'default_monto':monto_provision_ingreso}"
+                            />
+                    </header>
                     <sheet>
                         <group col="4">
                             <field name="comentario"/>

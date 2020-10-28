@@ -20,6 +20,9 @@ class CategoriaEgreso(models.Model):
    descripcion = fields.Char('Descripcion', required=True)
    activo = fields.Boolean('Activo?', default=True)
 
+class Entidad(models.Model):
+   _name = 'modulo1.entidad'
+
 
 
 
@@ -54,7 +57,7 @@ class Ingreso(models.Model):
    comentario               = fields.Char('Descripcion', required=True)
    fecha_provision_ingreso  = fields.Date('Fecha Ingreso')
    igv                      = fields.Boolean('Con IGV', default=True)
-   monto_provision_ingreso  = fields.Float('SubTotal', required=True)
+   monto_provision_ingreso  = fields.Float('SubTotal')
    periodo                  = fields.Selection([
                                                 ('2020-08','2020-08'),
                                                 ('2020-09','2020-09'),
@@ -63,7 +66,9 @@ class Ingreso(models.Model):
    
 
 
-   #def recaudar(self):
+   def change_comentario(self): #boton de objeto son para funcionalidad dentro del mismo modelo, no se tiene 
+      self.comentario = "Se cambio el comentario"
+      
       
 
 
@@ -74,7 +79,7 @@ class Egreso(models.Model):
    comentario               = fields.Char('Descripcion', required=True)
    fecha_provision_egreso   = fields.Date('Fecha Egreso')
    igv                      = fields.Boolean('Con IGV', default=True)
-   monto_provision_egreso   = fields.Float('Sub Total', required=True)
+   monto_provision_egreso   = fields.Float('Sub Total')
    periodo                  = fields.Selection([
                                                 ('2020-08','2020-08'),
                                                 ('2020-09','2020-09'),
@@ -91,8 +96,8 @@ class Pago(models.Model):
 
    @api.onchange('monto_pago')
    def CalcularTotal(self):
-      self.monto_pago_igv   =  monto_pago * 0.12 
-      self.monto_pago_total =  monto_pago_igv + monto_pago
+      self.monto_pago_igv   =  self.monto_pago * 0.12 
+      self.monto_pago_total =  self.monto_pago_igv + self.monto_pago
 
    #origen_id   = fields.Char
    comentario  = fields.Char('Comentario', required=False)

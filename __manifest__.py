@@ -24,7 +24,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        #'views/todo_menu.xml',
+        'wizards/wizard.xml',
         'views/todo_views.xml'
         #'views/templates.xml',
     ],

@@ -15,3 +15,5 @@ que va a ejecutar una logica dentro del modelo
 -->
  <!-- sequence : es el orden de aparacion de los submenus segun el numero --> 
 
+ default -> enviar un valor por defecto en una vista de formulario
+

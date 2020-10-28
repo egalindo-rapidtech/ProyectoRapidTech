@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_modulo1_cobro_ingreso_form" model="ir.ui.view">
+            <field name="name">Pago Ingreso</field>
+            <field name="model">modulo1.cobro.ingreso</field>
+            <field name="arch" type="xml">
+                <form string="Cobro Ingreso">
+                    <group>
+                        <field name="monto" />
+                        <field name="monto_igv" />
+                        <field name="monto_total" />
+                    </group>
+                    <footer>
+                        <button name="cobrar_ingreso" id="cobrar_ingreso" string="Cobrar Ingreso" type="object"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_modulo1_cobro_ingreso" model="ir.actions.act_window">
+            <field name="name">Cobro Ingreso</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">modulo1.cobro.ingreso</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <!-- TODO: check if we need this -->
+            <field name="binding_model_id" ref="modulo1.model_modulo1_ingreso" />
+            <field name="binding_view_types">form</field>
+        </record>
+
+</odoo>
