@@ -166,22 +166,14 @@
     <!--FIN PROVEEDOR-->
 
     <!--INICIO INGRESO-->
+
         <record id="view_modulo1_ingreso_form" model="ir.ui.view">
             <field name="name">modulo1.ingreso.form</field>
             <field name="model">modulo1.ingreso</field>
             <field name="arch" type="xml">
                 <form string="Ingreso">
                     <header>
-                    <!--<button name="change_comentario" type="object"
-                            string="cambiar_comentario" class="oe_highlight" 
-                            />--> <!--Boton de tipo object que llama a una funcion en el name -->
-                    <button name="%(modulo1.action_view_modulo1_recaudo_ingreso_form)d" string="Recaudar"
-                            type="action" class="btn-primary" context="{'default_monto':monto_provision_ingreso}" 
-                            />  <!--Boton de tipo action que llama a un action en el name-->
-                    <!--<button name="%(modulo1.action_view_modulo1_recaudo_ingreso_tree)d" string="Ver Recaudo"
-                            type="action" class="btn-primary" />   -->                 
-                    <!--<button name="%(modulo1.action_view_modulo1_pago_tree)d" string="Ver Recaudo 2"
-                            type="action" class="btn-primary" />-->                         
+                        <button string="Pagar" name="%(action_view_modulo1_recaudo_ingreso_form)d" type="action" class="oe_highlight"/>
                     </header>
                     <sheet>
                         <group col="4">
@@ -190,7 +182,10 @@
                             <field name="igv"/>
                             <field name="monto_provision_ingreso"/>
                             <field name="periodo"/>
+                            <field name="pago_ids"/>
+                            <field name="state"/>
                         </group>
+
                     </sheet>
                 </form>
             </field>
@@ -293,6 +288,7 @@
                             <field name="monto_recaudo_igv"/>
                             <field name="monto_recaudo_detraccion"/>
                             <field name="monto_recaudo_total"/>
+                            <field name="ingreso_id"/>
                         </group>
                     </sheet>
                 </form>
@@ -311,13 +307,13 @@
             </field>
         </record>
 
-      <!--<record id="action_view_modulo1_pago_tree" model="ir.actions.act_window">
+        <record id="action_modulo1_pago" model="ir.actions.act_window">
             <field name="name">Lista de Pago</field>
             <field name="res_model">modulo1.pago</field>
-            <field name="view_mode">tree</field>
-            <field name="target">new</field>
-            <field name="view_id">view_modulo1_pago_tree</field>
-      </record>-->
+            <field name="view_mode">tree,form</field>
+      </record>
+
+
 <!--FIN PAGO-->
 
 
@@ -325,6 +321,7 @@
   <menuitem id="menu_principal" name="Demo Finanzas" /> 
   <menuitem id="menu_maestro" parent="menu_principal" name="Maestro" />
   <menuitem id="menu_operacion" parent="menu_principal" name="Operacion"  /> 
+  <menuitem id="menu_pagos" parent="menu_principal" name="Pagos" action="action_modulo1_pago"/> 
 
 <!-- MENUS SECUNDARIOS MAESTROS-->
     <menuitem id="modulo1_categoria_ingreso_menu" parent="menu_maestro" name="Categoria Ingreso" action="modulo1_categoria_ingreso_action" sequence="4"/>

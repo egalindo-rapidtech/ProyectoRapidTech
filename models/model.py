@@ -52,6 +52,8 @@ class Proveedor(models.Model):
 
 class Ingreso(models.Model):
    _name = 'modulo1.ingreso'
+   _rec_name= 'comentario'
+   _description = 'Este modulo es para ingreso'
    #Quiero enlazar una entidad de tipo cliente que debo hacer para filtrar a los datos de entidad
    cliente_id               = fields.Many2one('Cliente', string='Cliente') 
    comentario               = fields.Char('Descripcion', required=True)
@@ -64,7 +66,12 @@ class Ingreso(models.Model):
                                                 ('2020-10','2020-10')
                                              ])
    
+   pago_ids = fields.One2many('modulo1.pago','ingreso_id','Pago')
+   state = fields.Selection([('draft','borrador'),('paid','pagado')], string='state', default="draft")
 
+
+   def change_state(self):
+      self.state = 'paid'
 
   # def change_comentario(self): #boton de objeto son para funcionalidad dentro del mismo modelo, no se tiene 
    #   self.comentario = "Se cambio el comentario"
@@ -107,6 +114,7 @@ class Pago(models.Model):
    monto_recaudo_detraccion   = fields.Float('Subtotal Detraccion')
    monto_recaudo_total        = fields.Float('Total')
    
+   ingreso_id             = fields.Many2one('modulo1.ingreso', string='Ingreso')
 
    @api.onchange('monto_recaudo')
    def calcular_montos(self):
@@ -115,9 +123,19 @@ class Pago(models.Model):
       self.monto_recaudo_total = self.monto_recaudo + self.monto_recaudo_igv - self.monto_recaudo_detraccion
 
    #@api.model
+   #def ingresar_recaudo(self):
+   #   ingreso_id = self.env['modulo1.ingreso'].browse(self._context.get('active_id'))
+   #   self.origen_id = ingreso_id
+
+
+class Pago2(models.Model):
+   _inherit = 'modulo1.pago'
+
    def ingresar_recaudo(self):
-      ingreso_id = self.env['modulo1.ingreso'].browse(self._context.get('active_id'))
-      self.origen_id = ingreso_id
+      print('asdfasdfa')
+      super(Pago2,self).ingresar_recaudo()
+
+
 
 
 
