@@ -1,3 +1,47 @@
+En Odoo existen cuatro conceptos sumamente utilizados en su desarrollo: 
+Vistas, Menúes, Acciones y Modelos.
+
+no intenten hacer una relación directa entre el paradigma 
+presentado por Odoo y el patrón de diseño MVC. 
+El framework de trabajo que presenta odoo es de muy alto nivel 
+(con poco código podemos hacer grandes cosas), 
+
+No deben confundir el modelo de MVC con el modelo de Odoo, 
+a este último lo llamamos modelo de negocio. 
+El modelo de negocio, una vez que lo declaramos, genera automáticamente su forma de persistirse 
+en la base de datos, para nosotros es transparente.
+
+
+Un menú
+
+Es un botón que se muestra en la interfaz de odoo. 
+Dependiendo de si tiene un padre o no, será un menú principal y aparecerá 
+en la parte superior de la interfaz o, en el caso de que tenga padre, 
+se muestra en el costado izquierdo de la interfaz de odoo. 
+Un menú puede tener asociada una action que se ejecuta cuando es presionado.
+
+<button name="action_sheet_move_create" 
+        string="Post Journal Entries"
+        type="object" 
+        groups="account.group_account_manager" 
+        attrs="{'invisible': [('state', '!=', 'approve')]}" 
+        class="oe_highlight o_expense_sheet_post"/>
+
+The button name is action_sheet_move_create (you can see that is referenced in the Extension View)
+The string is the text displayed on the button
+The type is “object”
+Authorization to the button is controlled by groups. This is optional (no control) 
+or could contain a list of groups
+Various attributes can be specified. In this case, the button is only displayed if the Expenses are already approved.
+Finally the class is the Python code that will post the journal entry 
+
+
+
+
+Una accion
+
+Relaciona un menú con las vistas que quieren mostrarse al presionar ese menú.
+
 <!-- 
 model = "ir.action.act_window"
 

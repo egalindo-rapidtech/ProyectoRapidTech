@@ -153,7 +153,7 @@
         </record>
 
       <record id="modulo1_proveedor_action" model="ir.actions.act_window">
-            <field name="name">Cliente</field>
+            <field name="name">Proveedor</field>
             <field name="res_model">modulo1.proveedor</field>
             <field name="view_mode">tree,form</field>
             <!--<field name="search_view_id" ref="view_department_filter"/>-->
@@ -172,12 +172,16 @@
             <field name="arch" type="xml">
                 <form string="Ingreso">
                     <header>
-                    <button name="change_comentario" type="object"
-                            string="cambiar_comentario" class="oe_highlight"
-                            />
-                    <button name="%(modulo1.action_view_modulo1_cobro_ingreso)d" string="Cobrar"
-                            type="action" class="btn-primary" context="{'default_monto':monto_provision_ingreso}"
-                            />
+                    <!--<button name="change_comentario" type="object"
+                            string="cambiar_comentario" class="oe_highlight" 
+                            />--> <!--Boton de tipo object que llama a una funcion en el name -->
+                    <button name="%(modulo1.action_view_modulo1_recaudo_ingreso_form)d" string="Recaudar"
+                            type="action" class="btn-primary" context="{'default_monto':monto_provision_ingreso}" 
+                            />  <!--Boton de tipo action que llama a un action en el name-->
+                    <!--<button name="%(modulo1.action_view_modulo1_recaudo_ingreso_tree)d" string="Ver Recaudo"
+                            type="action" class="btn-primary" />   -->                 
+                    <!--<button name="%(modulo1.action_view_modulo1_pago_tree)d" string="Ver Recaudo 2"
+                            type="action" class="btn-primary" />-->                         
                     </header>
                     <sheet>
                         <group col="4">
@@ -191,6 +195,20 @@
                 </form>
             </field>
         </record>
+ 
+ 
+    <!--<record id="view_employee_legajo_tree" model="ir.ui.view">
+            <field name="name">hr.employee.legajo.tree</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='name']" position="after">
+                		<field name="last_name"/>
+                		<field name="mother_last_name"/>
+                	</xpath>
+            </field>
+        </record>-->
+    
 
       <record id="view_modulo1_ingreso_tree" model="ir.ui.view">
             <field name="name">modulo1.ingreso.tree</field>
@@ -271,10 +289,10 @@
                         <group col="4">
                             <field name="comentario"/>
                             <field name="fecha_pago"/>
-                            <field name="monto_pago"/>
-                            <field name="monto_pago_igv"/>
-                            <field name="monto_pago_total"/>
-                            <field name="metodo_pago"/>
+                            <field name="monto_recaudo"/>
+                            <field name="monto_recaudo_igv"/>
+                            <field name="monto_recaudo_detraccion"/>
+                            <field name="monto_recaudo_total"/>
                         </group>
                     </sheet>
                 </form>
@@ -286,24 +304,20 @@
             <field name="model">modulo1.pago</field>
             <field name="arch" type="xml">
                 <tree string="Pagos">
-                    <field name="monto_pago_total"/>
+                    <field name="monto_recaudo_total"/>
                     <field name="fecha_pago"/>
                     <field name="metodo_pago"/>
                 </tree>
             </field>
         </record>
 
-      <record id="modulo1_pago_action" model="ir.actions.act_window">
-            <field name="name">Pago</field>
+      <!--<record id="action_view_modulo1_pago_tree" model="ir.actions.act_window">
+            <field name="name">Lista de Pago</field>
             <field name="res_model">modulo1.pago</field>
-            <field name="view_mode">tree,form</field>
-            <!--<field name="search_view_id" ref="view_department_filter"/>-->
-            <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">
-                    Crea una nuevo pago
-                </p>
-            </field>
-        </record>
+            <field name="view_mode">tree</field>
+            <field name="target">new</field>
+            <field name="view_id">view_modulo1_pago_tree</field>
+      </record>-->
 <!--FIN PAGO-->
 
 
@@ -313,10 +327,10 @@
   <menuitem id="menu_operacion" parent="menu_principal" name="Operacion"  /> 
 
 <!-- MENUS SECUNDARIOS MAESTROS-->
-    <menuitem id="modulo1_categoria_ingreso_menu" parent="menu_maestro" name="Categoria Ingreso" action="modulo1_categoria_ingreso_action" />
-    <menuitem id="modulo1_categoria_egreso_menu" parent="menu_maestro" name="Categoria Egreso" action="modulo1_categoria_egreso_action" />
-    <menuitem id="modulo1_cliente_menu" parent="menu_maestro" name="Cliente" action="modulo1_cliente_action" />
-    <menuitem id="modulo1_proveedor_menu" parent="menu_maestro" name="Proveedor" action="modulo1_proveedor_action" />
+    <menuitem id="modulo1_categoria_ingreso_menu" parent="menu_maestro" name="Categoria Ingreso" action="modulo1_categoria_ingreso_action" sequence="4"/>
+    <menuitem id="modulo1_categoria_egreso_menu" parent="menu_maestro" name="Categoria Egreso" action="modulo1_categoria_egreso_action" sequence="3"/>
+    <menuitem id="modulo1_cliente_menu" parent="menu_maestro" name="Cliente" action="modulo1_cliente_action" sequence="2" />
+    <menuitem id="modulo1_proveedor_menu" parent="menu_maestro" name="Proveedor" action="modulo1_proveedor_action" sequence="1"/>
     <menuitem id="modulo1_ingreso_menu" parent="menu_operacion" name="Ingreso" action="modulo1_ingreso_action" />
     <menuitem id="modulo1_egreso_menu" parent="menu_operacion" name="Egreso" action="modulo1_egreso_action" />
 

@@ -6,4 +6,5 @@ access_modulo1_proveedor,proveedor.egreso,model_modulo1_proveedor,,1,1,1,1
 access_modulo1_ingreso,modulo1.ingreso,model_modulo1_ingreso,,1,1,1,1
 access_modulo1_egreso,modulo1.egreso,model_modulo1_egreso,,1,1,1,1
 access_modulo1_pago,modulo1.pago,model_modulo1_pago,,1,1,1,1
-access_modulo1_cobro_ingreso,modulo1.cobro.ingreso,model_modulo1_cobro_ingreso,,1,1,1,1
+access_modulo1_transient_recaudo,modulo1.transient.recaudo,model_modulo1_transient_recaudo,,1,1,1,1
+

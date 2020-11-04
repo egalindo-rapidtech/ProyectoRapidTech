@@ -66,8 +66,8 @@ class Ingreso(models.Model):
    
 
 
-   def change_comentario(self): #boton de objeto son para funcionalidad dentro del mismo modelo, no se tiene 
-      self.comentario = "Se cambio el comentario"
+  # def change_comentario(self): #boton de objeto son para funcionalidad dentro del mismo modelo, no se tiene 
+   #   self.comentario = "Se cambio el comentario"
       
       
 
@@ -94,19 +94,31 @@ class Egreso(models.Model):
 class Pago(models.Model):
    _name = 'modulo1.pago'
 
-   @api.onchange('monto_pago')
-   def CalcularTotal(self):
-      self.monto_pago_igv   =  self.monto_pago * 0.12 
-      self.monto_pago_total =  self.monto_pago_igv + self.monto_pago
-
-   #origen_id   = fields.Char
-   comentario  = fields.Char('Comentario', required=False)
-   fecha_pago  = fields.Date('Fecha Pago')
-   metodo_pago = fields.Selection([('Transferencia','Deposito')])
-   monto_pago       = fields.Float('SubTotal', required=True)
-   monto_pago_igv   = fields.Float('SubTotal IGV')
-   monto_pago_total = fields.Float('Total')
+   #@api.onchange('monto_pago')
+   #def CalcularTotal(self):
+   #   self.monto_pago_igv   =  self.monto_pago * 0.12 
+   #   self.monto_pago_total =  self.monto_pago_igv + self.monto_pago
+   origen_id                  = fields.Integer('Origen', readonly="1")
+   comentario                 = fields.Char('Comentario', required=False)
+   fecha_pago                 = fields.Date('Fecha Pago')
+   metodo_pago                = fields.Selection([('Transferencia','Deposito')])
+   monto_recaudo              = fields.Float('SubTotal', required=True)
+   monto_recaudo_igv          = fields.Float('SubTotal IGV')
+   monto_recaudo_detraccion   = fields.Float('Subtotal Detraccion')
+   monto_recaudo_total        = fields.Float('Total')
    
+
+   @api.onchange('monto_recaudo')
+   def calcular_montos(self):
+      self.monto_recaudo_igv = self.monto_recaudo * 0.18
+      self.monto_recaudo_detraccion = (self.monto_recaudo + self.monto_recaudo_igv) * 0.12
+      self.monto_recaudo_total = self.monto_recaudo + self.monto_recaudo_igv - self.monto_recaudo_detraccion
+
+   #@api.model
+   def ingresar_recaudo(self):
+      ingreso_id = self.env['modulo1.ingreso'].browse(self._context.get('active_id'))
+      self.origen_id = ingreso_id
+
 
 
 """
